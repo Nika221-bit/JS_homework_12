@@ -91,6 +91,88 @@
   </script>
 
 <!-- დავალება 8 -->
+  <input type="file" id="suratisatvirtva">
+  <br><br>
+  <img id="preview" style="max-width:300px; display:none;" />
+
+  <script>
+    const suratisatvirtva = document.getElementById("suratisatvirtva");
+    const preview = document.getElementById("preview");
+
+    suratisatvirtva.addEventListener("change", function() {
+      const faili = suratisatvirtva.files[0];
+      if (faili) {
+        if (faili.type === "image/png") {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.style.display = "block";
+          };
+          reader.readAsDataURL(faili);
+        } else {
+          alert("მხოლოდ PNG ფორმატის ფაილების ატვირთვა დაშვებულია");
+          preview.style.display = "none";
+        }
+      }
+    });
+  </script>
+
+<!-- დავალება 9 -->
+  <input type="file" id="surati">
+  <br><br>
+  <img id="preview1" style="max-width:300px; display:none;" />
+
+  <script>
+    const surati = document.getElementById("surati");
+    const preview1 = document.getElementById("preview1");
+
+    window.addEventListener("load", function() {
+      const shemshveli = localStorage.getItem("shemshveliSurati");
+      if (shemshveli) {
+        preview1.src = shemshveli;
+        preview1.style.display = "block";
+      }
+    });
+    surati.addEventListener("change", function() {
+      const faili = surati.files[0];
+      if (faili) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const base64 = e.target.result;
+          preview1.src = base64;
+          preview1.style.display = "block";
+
+          
+          localStorage.setItem("shemshveliSurati", base64);
+        };
+        reader.readAsDataURL(faili);
+      }
+    });
+  </script>
+
+<!-- დავალება 10 -->
+  <input type="text" id="telefoni" placeholder="+9955XXXXXXXX">
+  <p id="shedegi2"></p>
+
+  <script>
+    const telefoni = document.getElementById("telefoni");
+    const shedegi2 = document.getElementById("shedegi2");
+    const regex2 = /^\+9955\d{8}$/;
+
+    telefoni.addEventListener("keyup", function() {
+      const mnishvneloba = telefoni.value;
+      if (regex2.test(mnishvneloba)) {
+        shedegi2.textContent = "ნომერი სწორია";
+        shedegi2.style.color = "green";
+      } else {
+        shedegi2.textContent = "არასწორი ნომერი";
+        shedegi2.style.color = "red";
+      }
+    });
+  </script>
+
+
+
 
 
 

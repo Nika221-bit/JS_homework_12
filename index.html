@@ -24,8 +24,74 @@
       <div id="info"></div>
  
      <!-- დავალება5 -->
-    <input type="file" id="fileInput" accept="image/*">
-    <textarea id="base64" rows="8" cols="60" placeholder="აქ გამოჩნდება base64 კოდი"></textarea>
+  <input type="file" id="suratisAtvirte">
+  <br><br>
+
+
+  <textarea id="base64Veli" rows="10" cols="50"></textarea>
+
+  <script>
+    const suratisAtvirte = document.getElementById("suratisAtvirte");
+    const base64Veli = document.getElementById("base64Veli");
+
+    suratisAtvirte.addEventListener("change", function() {
+      const faili = suratisAtvirte.files[0];
+      if (faili) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          base64Veli.value = e.target.result; 
+        };
+        reader.readAsDataURL(faili);
+      } else {
+        base64Veli.value = "ფაილი არ არის არჩეული!";
+      }
+    });
+  </script>
+
+<!-- დავალება 6 -->
+ <input type="text" id="emailVeli" placeholder="შეიყვანე Email">
+  <p id="shedegi"></p>
+
+  <script>
+    const emailVeli = document.getElementById("emailVeli");
+    const shedegi = document.getElementById("shedegi");
+
+    const regex = /^[\w.-]+@[\w-]+\.\w+$/;
+    emailVeli.addEventListener("keyup", function() {
+      const mnishvneloba = emailVeli.value;
+      if (regex.test(mnishvneloba)) {
+        shedegi.textContent = "Email სწორია";
+        shedegi.style.color = "green";
+      } else {
+        shedegi.textContent = "არასწორია";
+        shedegi.style.color = "red";
+      }
+    });
+  </script>
+
+<!-- დავალება 7 -->
+  <input type="password" id="paroli" placeholder="შეიყვანე პაროლი">
+  <p id="shedegi"></p>
+
+  <script>
+    const paroli = document.getElementById("paroli");
+    const shedegi1 = document.getElementById("shedegi");
+    const regex1 = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
+
+    paroli.addEventListener("keyup", function() {
+      const mnishvneloba = paroli.value;
+      if (regex1.test(mnishvneloba)) {
+        shedegi1.textContent = "პაროლი ძლიერია ";
+        shedegi1.style.color = "green";
+      } else {
+        shedegi1.textContent = "პაროლი სუსტია ";
+        shedegi1.style.color = "red";
+      }
+    });
+  </script>
+
+<!-- დავალება 8 -->
+
 
 
     <script src="main.js"></script>

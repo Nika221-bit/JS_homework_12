@@ -54,20 +54,6 @@ input.addEventListener("keyup", (e) => {
     });
 
 //დავალება 5
-//   const fileInput2 = document.querySelector("#fileInput");
-//     const base64Area = document.querySelector("#base64");
-
-//     fileInput2.addEventListener("change", () => {
-//       const file = fileInput.files[0];
-//       if (file) {
-//         const reader = new FileReader();
-//         reader.onload = () => {
-         
-//           base64Area.textContent = reader.result;
-//         };
-//         reader.readAsDataURL(file);
-//       }
-//     });
 
 
 

@@ -8,6 +8,7 @@ input.addEventListener("keyup", (e) => {
   } else {
     msg.textContent = "";
   }
+  
 });
 
 // დავალება 2
